@@ -1,0 +1,118 @@
+<ion-header #toolbar>
+  <ion-toolbar>
+    <ion-title>
+      Plot & Skyplot
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-fab vertical="center" horizontal="end" slot="fixed">
+        <ion-fab-button size="small" color="transparent">
+          <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="start">
+          <ion-fab-button (click)="share()" color="transparent">
+            <ion-icon name="share-social-outline"></ion-icon>
+          </ion-fab-button>
+          <!-- <ion-select>
+            <ion-select-option>Plot</ion-select-option>
+            <ion-select-option>Skyplot</ion-select-option>
+          </ion-select> -->
+          <ion-fab-button (click)="saveImage()" color="transparent">
+            <ion-icon name="save-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+  <ion-progress-bar type="indeterminate" id="progressbarSky"></ion-progress-bar>
+</ion-header>
+
+<ion-content id="conteudo" #content scrollEvents="true" [appHideHeader]="toolbar" [appDivActualize]="skyplot">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" id="refresher">
+    <ion-refresher-content pullingText="Pull to refresh">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card>
+    <ion-item>
+      <ion-label>{{ 'PLOT.choose_mode' | translate:param }}</ion-label>
+      <ion-select [(ngModel)]="option" id="option_sky" (ionChange)="clearOnChangeOption();setAtualDate()">
+        <ion-select-option value="map">{{ 'PLOT.choose_mode_options.map' | translate:param }}</ion-select-option>
+        <ion-select-option value="station">{{ 'PLOT.choose_mode_options.station' | translate:param }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+  <form name="formulario" method="POST" onsubmit="verify();" *ngIf="option=='map' || option=='station'">
+    <ion-card>
+      <ion-item>
+        <ion-label>{{ 'PLOT.date' | translate:param }}</ion-label>
+        <ion-input type="date" id="date_sky"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label *ngIf="option=='station'">{{ 'PLOT.time_begin' | translate:param }}</ion-label>
+        <ion-label *ngIf="option=='map'">{{ 'PLOT.time' | translate:param }}</ion-label>
+        <ion-input type="time" id="time_begin_sky"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="option=='map'">
+        <ion-label>{{ 'PLOT.offset' | translate:param }}</ion-label>
+        <ion-input type="number" id="offset_time" value="30" placeholder="min"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="option=='station'">
+        <ion-label>{{ 'PLOT.time_end' | translate:param }}</ion-label>
+        <ion-input type="time" id="time_end_sky"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label>Horário Atual</ion-label>
+        <ion-checkbox (ionChange)="setAtualDate($event)" id="atualTime" checked="false"></ion-checkbox>
+      </ion-item> -->
+
+      <ion-item *ngIf="option=='station'">
+        <ion-label>{{ 'PLOT.station' | translate:param }}</ion-label>
+        <ion-select name="stationName" id="stationName_sky">
+          <ion-select-option *ngFor="let option of stations" [value]="option">{{option}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button type="submit" id="requisitarSky" class="ion-text-center">{{ 'PLOT.submit' | translate:param }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+  <ion-grid *ngIf="option=='map'">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button onclick="findClosestStation();" class="ion-text-center">{{ 'PLOT.nearest_station' | translate:param }}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div id="map" *ngIf="option=='map'">
+    <div id="map_container_sky"></div>
+  </div>
+
+  <div id="gps_sky_container" #skyplot></div>
+  <div id="gps_plot_container"></div>
+
+  <!-- Itens ocultos -->
+  <button (click)="scrollToBottom()" id="butao_sky"></button>
+  <textarea id="image_sky"></textarea>
+  <textarea id="image_plot"></textarea>
+  <textarea id="geolocation"></textarea>
+</ion-content>

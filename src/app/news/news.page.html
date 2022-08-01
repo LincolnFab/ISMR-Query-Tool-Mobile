@@ -1,0 +1,173 @@
+<ion-header>
+  <ion-toolbar #toolbar>
+    <ion-title>Ajuda</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-segment id="segment" [(ngModel)]="options" (ionChange)="setImages();">
+    <ion-segment-button value="skyplot">
+      <ion-label>Plot & Skyplot</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="plot">
+      <ion-label>Advanced Plot</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="historico">
+      <ion-label>Histórico</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="outros">
+      <ion-label>Outros</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content scrollEvents="true" [appHideHeader]="toolbar">
+
+  <div id="container" *ngIf="options=='intro'">
+    <p>
+      &emsp;No momento o aplicativo do ISMR Query Tool apresenta dois tipos de geração de gráficos, sendo eles o Plot & Skyplot
+      e o Advanced Plot. Além disso apresenta a função de histórico caso o usuário deseje salvar um gráfico e compartilhá-lo
+      depois.
+    </p>
+  </div>
+
+  <div id="container" *ngIf="options=='plot' || options=='skyplot' || options=='historico' || options=='outros'">
+    <div *ngIf="options=='plot'" class="animated fadeIn slow">
+      <h4>Advanced Plot</h4>
+      <p>
+        &emsp;A função Advanced Plot foi desenvolvida com base na ferramenta web que possibilita a geração de gráficos com
+        atributos disponíveis no banco de dados do INCT.
+      </p><br><br>
+      <p>
+        &emsp;A geração dos gráficos dependem da entrada dos filtros que são separados em três sessôes:
+      </p>
+      <ul>
+        <li>Data e Hora</li>
+        <li>Estação, Atributo, Elevação e Satélites</li>
+        <li>Estilos do gráfico</li>
+      </ul><br>
+
+      <h6>Data e Hora</h6>
+      <p>
+        &emsp;A primeira sessão, como o próprio nome já indica, é a sessão para entrada do intervalo de tempo.
+      </p>
+      <img id="data_hora"><br><br>
+
+      <h6>Estação e Satélite</h6>
+      <p>
+        &emsp;A segunda sessão é a entrada de dados necessários para selecionar os satélites que serão visíveis no
+        gráfico
+        a ser gerado (GPS, GLONASS, BEIDOU, etc.)
+      </p>
+      <img id="satellites"><br>
+      <p>
+        &emsp;Também apresenta os filtros de Atributo, Estação e Máscara de elevação.
+      </p>
+      <img id="estacao_atr_masc_sat"><br><br>
+
+      <h6>Estilos de linhas</h6>
+      <p>
+        &emsp;Por fim, a última sessão é utilizada para personalização das linhas do gráfico.
+      </p>
+      <img id="estilo"><br>
+      <p>
+        &emsp;O gráfico gerado irá apresentar os dados correspondentes à pesquisa, caso não haja dados disponíveis ou
+        alguma entrada estiver errada será mostrado um alerta.
+      </p><br><br>
+    </div>
+
+    <div *ngIf="options=='skyplot'" class="animated fadeIn slow">
+      <h4>Plot & Skyplot</h4>
+      <p>
+        &emsp;A função Plot & Skyplot foi desenvolvida com base na ferramenta do ISMR Query Tool, assim como a função Advanced Plot.
+        Esta função possui dois modos de plot gráfico, uma utilizando o mapa e outra utilizando os filtros diretamente.
+      </p>
+      <img id="opcao"><br><br>
+
+      <h6>Mapa</h6>
+      <p>
+        &emsp;A opção de "Plot & Skyplot - Mapa" gera um mapa das estações que estavam operando no período inserido. Ao clicar
+        em uma estação presente no mapa o aplicativo irá gerar um gráfico Scatterpolar, mostrando os satélites
+        na região.
+      </p>
+      <img id="filtro_mapa"><br>
+
+      <p>
+        &emsp; Os dados necessários para gerar o mapa são:
+      </p>
+      <ul>
+        <li>Data e Hora</li>
+        <li>Offset</li>
+      </ul>
+      <p>
+        &emsp;O offset é um filtro utilizado para determinar o intervalo de tempo da visualização. Por exemplo, se o
+        período inserido no filtro "Horário" for 10:30 e o "Offset" 10, o interavlo de tempo presente na geração do
+        gráfico será de 10:20 até 10:40, 10 minutos a mais e 10 minutos a menos, totalizando 20 minutos. O valor padrão
+        desse filtro é de 30 minutos.
+      </p>
+
+      <h6>Estação</h6>
+      <p>
+        &emsp;Na opção de "Plot & Skyplot - Estação" é possível selecionar a estação preferencial de maneira direta, sem a
+        necessidade de gerar um mapa posteriormente. A entrada de dados para os filtros são:
+      </p>
+      <ul>
+        <li>Data e Hora</li>
+        <li>Estação</li>
+      </ul>
+      <img id="estacao"><br>
+
+      <p>
+        &emsp;O gráfico gerado irá apresentar os dados correspondentes à pesquisa, caso não haja dados disponíveis ou
+        alguma entrada estiver errada será mostrado um alerta.
+      </p><br><br>
+    </div>
+
+    <div *ngIf="options=='historico'" class="animated fadeIn slow">
+      <h4>Histórico</h4>
+      <p>
+        &emsp;O histórico foi desenvolvido com a finalidade de armazenar dentro do aplicativo os gráficos gerados pelo
+        usuário.
+      </p>
+      <img id="historic"><br>
+
+      <p>
+        &emsp;É possivel fazer o gerenciamento do histórico a partir dos botões localizados no canto superior direito da
+        página, como compartilhar, excluir imagens ou até mesmo limpar o histórico por completo.
+      </p>
+      <img id="historico_toolbar"><br><br>
+    </div>
+
+    <div *ngIf="options=='outros'" class="animated fadeIn slow">
+      <h4>Funções Adicionais</h4>
+      <p>
+        &emsp;Existe também funções adicionais para facilitar o compartilhamento dos gráficos que foram gerados pelo
+        usuário, localizadas no canto superior direito da página Plot & Skyplot e Advanced Plot.
+      </p><br>
+
+      <h6>Salvar e compartilhar</h6>
+      <p>
+        &emsp;A primeira é utilizada para compartilhar o gráfico pelas mídias sociais presente no dispositivo celular e
+        a
+        segunda realiza o salvamento da imagem na aba Histórico.
+      </p>
+      <img id="plot_toolbar"><br>
+
+      <h6>Vizualização</h6>
+      <p>
+        &emsp;Para facilitar a visualização de gráficos complexos é possivel mudar a orientação da tela para o modo
+        retrato habilitando a orientação automática no painel do Android.
+      </p><br>
+
+      <h6>Atualização</h6>
+      <p>
+        &emsp;Nas páginas Plot & Skyplot, Advanced Plot e Histórico é possível atualizar a página puxando a mesma para baixo até
+        aparecer
+        o ícone de atualização. Essa opção redefine os filtros e mapas no Plot & Skyplot e Advanced Plot e atualiza as imagens salvas
+        quando utilizado na página do Histórico.
+      </p><br><br>
+    </div>
+
+  </div>
+</ion-content>

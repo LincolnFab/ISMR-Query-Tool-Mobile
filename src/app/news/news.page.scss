@@ -1,0 +1,43 @@
+// ion-toolbar {
+//     --background: transparent;
+//     --border-color: transparent;
+// }
+ion-content {
+    --offset-top: 0px;
+    --padding-top: 5.8em;
+    position: absolute;
+}
+
+img {
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+#opcao {
+    max-width: 200px;
+    max-height: 250px;
+}
+
+#container strong {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+#container p,
+ul li {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: justify;
+
+    color: #8c8c8c;
+
+    margin: 0;
+}
+
+#container a {
+    text-decoration: none;
+}

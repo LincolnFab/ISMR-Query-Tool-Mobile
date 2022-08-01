@@ -1,0 +1,193 @@
+<ion-header #toolbar>
+  <ion-toolbar>
+    <ion-title>Advanced Plot</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-fab vertical="center" horizontal="end" slot="fixed">
+        <ion-fab-button size="small" color="transparent">
+          <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="start">
+          <ion-fab-button (click)="share()" color="transparent">
+            <ion-icon name="share-social-outline"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button (click)="saveImage()" color="transparent">
+            <ion-icon name="save-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+  <ion-progress-bar type="indeterminate" id="progressbar"></ion-progress-bar>
+</ion-header>
+
+<ion-content id="conteudo" #content scrollEvents="true" [appHideHeader]="toolbar">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" id="refresher">
+    <ion-refresher-content pullingText="Pull to refresh">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <form name="formulario" method="POST" onsubmit="return plot();">
+
+    <!--<h4>Data/Hora</h4>-->
+    <ion-card>
+      <ion-item>
+        <ion-label>{{ 'ADVANCED_PLOT.date_begin' | translate:param }}</ion-label>
+        <ion-input type="date" id="date"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'ADVANCED_PLOT.time_begin' | translate:param }}</ion-label>
+        <ion-input type="time" id="time_begin"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'ADVANCED_PLOT.date_end' | translate:param }}</ion-label>
+        <ion-input type="date" id="date_end"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'ADVANCED_PLOT.time_end' | translate:param }}</ion-label>
+        <ion-input type="time" id="time_end"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <!--<h4>Estação/Satélite/Elevação</h4>-->
+    <ion-card>
+      <ion-item>
+        <ion-label>{{ 'ADVANCED_PLOT.station' | translate:param }}</ion-label>
+        <ion-select name="stationName" id="stationName">
+          <ion-select-option *ngFor="let option of stations" [value]="option">{{option}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'ADVANCED_PLOT.data_type' | translate:param }}</ion-label>
+        <ion-select name="dataType" id="dataType" value="s4">
+          <ion-select-option value="s4">S4 (L1)</ion-select-option>
+          <ion-select-option value="s4_l2">S4 (L2)</ion-select-option>
+          <ion-select-option value="s4_l5">S4 (L5)</ion-select-option>
+          <ion-select-option value="phi60l1">Sigma-Fi (L1)</ion-select-option>
+          <ion-select-option value="phi60_l5">Sigma-Fi (L2)</ion-select-option>
+          <ion-select-option value="phi60_l5">Sigma-Fi (L5)</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'ADVANCED_PLOT.elev' | translate:param }}</ion-label>
+        <ion-input type="number" id="elev" value="20"></ion-input>
+      </ion-item>
+
+      <div (click)="expandItem(item)" *ngFor="let item of items" id="satellites-card">
+        <ion-card-header id="header">
+          <ion-card-title id="center">{{ 'ADVANCED_PLOT.satellites' | translate:param }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <app-satellites expandHeight="300px" [expanded]="item.expanded" id="satelites">
+            <ion-item (click)="openSelector(gps)">
+              <ion-label>GPS</ion-label>
+              <ion-select #gps style="pointer-events: none" (ionCancel)="onCancel(gps)"
+                [interfaceOptions]="customAlertOptions" name="gps" class="gps" multiple="true">
+                <ion-select-option *ngFor="let option of gpsOptions" [value]="option">{{"G"+option}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item (click)="openSelector(glonass)">
+              <ion-label>Glonass</ion-label>
+              <ion-select #glonass style="pointer-events: none" (ionCancel)="onCancel(glonass)"
+                [interfaceOptions]="customAlertOptions" name="glonass" class="glonass" multiple="true">
+                <ion-select-option *ngFor="let option of glonassOptions" [value]="option">{{"R"+(option-37)}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item (click)="openSelector(galileo)">
+              <ion-label>Galileo</ion-label>
+              <ion-select #galileo style="pointer-events: none" (ionCancel)="onCancel(galileo)"
+                [interfaceOptions]="customAlertOptions" name="galileo" class="galileo" multiple="true">
+                <ion-select-option *ngFor="let option of galileoOptions" [value]="option">{{"E"+(option-70)}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item (click)="openSelector(sbas)">
+              <ion-label>SBAS</ion-label>
+              <ion-select #sbas style="pointer-events: none" (ionCancel)="onCancel(sbas)"
+                [interfaceOptions]="customAlertOptions" name="sbas" class="sbas" multiple="true">
+                <ion-select-option *ngFor="let option of sbasOptions" [value]="option">{{"S"+(option)}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item (click)="openSelector(beidou)">
+              <ion-label>Beidou</ion-label>
+              <ion-select #beidou style="pointer-events: none" (ionCancel)="onCancel(beidou)"
+                [interfaceOptions]="customAlertOptions" name="beidou" class="beidou" multiple="true">
+                <ion-select-option *ngFor="let option of beidouOptions" [value]="option">{{"C"+(option-140)}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item (click)="openSelector(qzss)">
+              <ion-label>QZSS</ion-label>
+              <ion-select #qzss style="pointer-events: none" (ionCancel)="onCancel(qzss)"
+                [interfaceOptions]="customAlertOptions" name="qzss" class="qzss" multiple="true">
+                <ion-select-option *ngFor="let option of qzssOptions" [value]="option">{{"J"+(option-180)}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+          </app-satellites>
+        </ion-card-content>
+      </div>
+    </ion-card>
+
+    <!--<h4>Estilos</h4>-->
+    <ion-card>
+      <ion-item>
+        <ion-label>{{ 'ADVANCED_PLOT.line_style' | translate:param }}</ion-label>
+        <ion-select name="lineStyle" id="lineStyle" value='none'>
+          <ion-select-option value="none">{{ 'ADVANCED_PLOT.line_style_options.none' | translate:param }}</ion-select-option>
+          <ion-select-option value="dot">{{ 'ADVANCED_PLOT.line_style_options.dot' | translate:param }}</ion-select-option>
+          <ion-select-option value="solid">{{ 'ADVANCED_PLOT.line_style_options.solid' | translate:param }}</ion-select-option>
+          <ion-select-option value="dash">{{ 'ADVANCED_PLOT.line_style_options.dash' | translate:param }}</ion-select-option>
+          <ion-select-option value="dashdot">{{ 'ADVANCED_PLOT.line_style_options.dashdot' | translate:param }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'ADVANCED_PLOT.line_width' | translate:param }}</ion-label>
+        <ion-input type="number" id="lineWidth" placeholder="px" value="1"></ion-input>
+      </ion-item>
+      <!--
+      <ion-item>
+        <ion-label>Mostrar media</ion-label>
+        <ion-checkbox type="checkbox" id="media"></ion-checkbox>
+      </ion-item>
+      -->
+    </ion-card>
+
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button type="submit" class="ion-text-center">{{ 'ADVANCED_PLOT.submit' | translate:param }}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+  <div id="chart1"></div>
+
+  <textarea id="image"></textarea>
+
+  <button (click)="scrollToBottom()" style="display: none;" id="butao"></button>
+
+</ion-content>

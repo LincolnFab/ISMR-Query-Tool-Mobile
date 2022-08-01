@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'ABOUT.title' | translate:param }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="top">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <div id="container">
+          <img src="../../assets/images/INCT.jpg">
+          <p class="descricao">{{ 'ABOUT.description' | translate:param }}</p>
+          <br><br>
+          {{ 'ABOUT.contributors' | translate:param }} <br><br>
+          Lincoln Fabiano <br> {{ 'ABOUT.stats_1' | translate:param }}<br><br>
+          Bruno César Vani <br> {{ 'ABOUT.stats_2' | translate:param }}
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

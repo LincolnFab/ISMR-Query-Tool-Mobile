@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'SETTINGS.title' | translate:param }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-item>
+      <ion-icon slot="start" name="home"></ion-icon>
+      <ion-label>{{ 'SETTINGS.start_page' | translate:param }}</ion-label>
+      <ion-select id="startPage" value="home" (ionChange)="changeStartPage();">
+        <ion-select-option value="home" Selected>Home</ion-select-option>
+        <ion-select-option value="skyplot">Plot & Skyplot</ion-select-option>
+        <ion-select-option value="plot">Advanced Plot</ion-select-option>
+        <ion-select-option value="historic">{{ 'SETTINGS.start_page_options.history' | translate:param }}</ion-select-option>
+        <ion-select-option value="settings">{{ 'SETTINGS.start_page_options.settings' | translate:param }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="language"></ion-icon>
+      <ion-label>{{ 'SETTINGS.language' | translate:param }}</ion-label>
+      <ion-select [(ngModel)]="selectedLanguage" (ionChange)="languageChanged()">
+        <ion-select-option value="pt">{{ 'SETTINGS.language_options.pt' | translate:param }}</ion-select-option>
+        <ion-select-option value="en">{{ 'SETTINGS.language_options.en' | translate:param }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-item lines="full">
+      <ion-icon slot="start" name="moon"></ion-icon>
+      <ion-label>
+        {{ 'SETTINGS.dark_theme' | translate:param }}
+      </ion-label>
+      <ion-toggle (ionChange)="changeTheme($event)" id="toggle" slot="end"></ion-toggle>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-icon slot="start" name="phone-portrait"></ion-icon>
+      <ion-label>
+        {{ 'SETTINGS.fullscreen' | translate:param }}
+      </ion-label>
+      <ion-toggle (ionChange)="changeScreenMode($event)" id="toggleScreen" slot="end"></ion-toggle>
+    </ion-item>
+  </ion-card>
+
+</ion-content>

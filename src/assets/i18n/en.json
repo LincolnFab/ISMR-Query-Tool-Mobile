@@ -1,0 +1,91 @@
+{
+    "HOME": {
+        "title_intro": "ISMR Query Tool",
+        "text_intro": "ISMR Query Tool is a web software that aims to extend the possibilities of analyzing ionosphere monitoring data through the application of visualization and data mining techniques, exploring resources in a visual analytic cycle. The software can also be used to download historical tracking data (files.ismr).",
+        
+        "title_mobile": "ISMR Query Tool Mobile",
+        "text_ismr_mobile": "ISMR Query Tool Mobile was developed with the same purpose as ISMR Query Tool but aiming at portability, making its use in mobile phones and tablets faster and more efficient.",
+        
+        "title_base": "Integrated database",
+        "text_base": "The integrated database consists of an effort to concentrate monitoring data from different networks of stations in a single repository. Currently, data from the CIGALA/CALIBRA, ICEA and LISN are available."
+    },
+    "PLOT": {
+        "choose_mode": "Choose Station",
+        "choose_mode_options": {
+            "map": "By Map",
+            "station": "By Name"
+        },
+
+        "date": "Date",
+
+        "time_begin": "Time begin",
+
+        "time":"Time",
+
+        "offset": "Offset",
+        
+        "time_end": "Time end",
+
+        "station": "Station",
+
+        "submit": "Plot",
+
+        "nearest_station": "Nearest Station"
+    },
+    "ADVANCED_PLOT": {
+        "date_begin": "Date begin",
+        "time_begin": "Time begin",
+        "date_end": "Date end",
+        "time_end": "Time end",
+
+        "station": "Station",
+
+        "data_type": "Attribute",
+
+        "elev": "Elev. Mask",
+
+        "satellites": "Satellites",
+
+        "line_style": "Line style",
+        "line_style_options": {
+            "none": "None",
+            "dot": "Dot",
+            "solid": "Line",
+            "dash": "Dash",
+            "dashdot": "Dashdot"
+        },
+
+        "line_width": "Line width",
+
+        "submit": "Plot"
+    },
+    "HISTORY": {
+        "title": "History",
+        "clear_history": "Clear history"
+    },
+    "SETTINGS": {
+        "title": "Settings",
+        "start_page": "Start Page",
+        "start_page_options": {
+            "history": "History",
+            "settings": "Settings"
+        },
+        "language": "Language",
+        "language_options": {
+            "pt": "Portuguese",
+            "en": "English"
+        },
+        "dark_theme": "Dark Theme",
+        "fullscreen": "Fullscreen"
+    },
+    "ABOUT": {
+        "title": "About",
+        "description": "Developed by the UNESP-funded research project of Presidente Prudente with the aim of expanding the INCT's resources for the study of ionospheric scintillation",
+        "contributors": "Contributors",
+        "stats_1": "IFSP Student PEP Campus",
+        "stats_2": "Professor at the IFSP Campus PEP"
+    },
+    "HELP": {
+        "title": "Help"
+    }
+}

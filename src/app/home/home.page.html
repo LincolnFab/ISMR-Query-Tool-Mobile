@@ -1,0 +1,35 @@
+<ion-header #toolbar>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true" [appHideHeader]="toolbar">
+
+  <div id="container">
+
+
+    <h4>{{ 'HOME.title_intro' | translate:param }}</h4>
+    <p>
+      &emsp;{{ 'HOME.text_intro' | translate:param }}
+    </p><br>
+
+    <h4>{{ 'HOME.title_mobile' | translate:param }}</h4>
+    <p>
+      &emsp;{{ 'HOME.text_ismr_mobile' | translate:param }}
+    </p><br>
+
+    <h4>{{ 'HOME.title_base' | translate:param }}</h4>
+    <p>
+      <!-- <a href='http://gnss.icea.gov.br/'> ICEA </a> -->
+      <!-- <a href='http://lisn.igp.gob.pe/'>LISN</a> -->
+      &emsp;{{ 'HOME.text_base' | translate:param }}
+    </p>
+  </div>
+
+</ion-content>

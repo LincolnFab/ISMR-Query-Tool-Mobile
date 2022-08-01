@@ -1,0 +1,48 @@
+// ion-toolbar {
+//     --background: transparent;
+//     --border-color: transparent;
+// }
+
+ion-content {
+    --offset-top: 0px;
+    --padding-top: 3.3em;
+    position: absolute;
+}
+
+#map_container {
+    width: auto;
+    height: 300px;
+    margin-bottom: 1em;
+    border-radius: 6px;
+}
+
+#map {
+    margin: 0.7em;
+}
+
+#gps_sky_container {
+    max-height: 30em;
+}
+
+#butao_sky,
+#image_sky,
+#image_plot,
+#geolocation {
+    display: none;
+}
+
+#offset_time,
+#date_sky,
+#time_begin_sky,
+#time_end_sky {
+    text-align: right;
+}
+
+.leaflet-pane .leaflet-marker-pane img {
+    width: 16px;
+    height: 28px;
+}
+
+.maindrag .drag .cursor-crosshair {
+    margin-left: 2em;
+}

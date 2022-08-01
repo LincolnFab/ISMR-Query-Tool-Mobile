@@ -1,0 +1,45 @@
+<ion-header #toolbar>
+  <ion-toolbar>
+    <ion-title>{{ 'HISTORY.title' | translate:param }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-fab vertical="center" horizontal="end" slot="fixed">
+        <ion-fab-button size="small" color="transparent">
+          <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="start">
+          <ion-fab-button (click)="share()" color="transparent">
+            <ion-icon name="share-social-outline"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button (click)="delete()" color="transparent">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true" [appHideHeader]="toolbar">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" id="refresher">
+    <ion-refresher-content pullingText="Pull to refresh">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button (click)="clearHistory()">{{ 'HISTORY.clear_history' | translate:param }}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div id="historico">
+  </div>
+
+</ion-content>

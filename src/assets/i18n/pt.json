@@ -1,0 +1,93 @@
+{
+    "HOME": {
+        "title_intro": "ISMR Query Tool",
+        "text_intro": "ISMR Query Tool é um software web que visa a estender as possibilidades de análise dos dados de monitoramento da ionosfera através da aplicação de técnicas de visualização e mineração de dados, explorando recursos em um ciclo analítico visual. O software também pode ser utilizado para fazer o download de dados históricos de montitoramento (arquivos.ismr).",
+        
+        "title_mobile": "ISMR Query Tool Mobile",
+        "text_ismr_mobile": "ISMR Query Tool Mobile foi desenvolvido com a mesma finalidade do ISMR Query Tool mas visando a portabilidade, tornando seu uso em celulares e tablets mais rápido e eficiente.",
+        
+        "title_base": "Base de dados integrada",
+        "text_base": "A base de dados integrada consiste em um esforço para concentrar dados de monitoramento de diferentes redes de estações em um único repositório. Atualmente, dados das redes CIGALA/CALIBRA, ICEA e LISN estão disponíveis."
+    },
+    "PLOT": {
+        "choose_mode": "Escolher estação",
+        "choose_mode_options": {
+            "map": "Pelo Mapa",
+            "station": "Pelo Nome"
+        },
+
+        "date": "Data",
+
+        "time_begin": "Horário inicial",
+
+        "time":"Horário",
+
+        "offset": "Offset",
+        
+        "time_end": "Horário final",
+
+        "station": "Estação",
+
+        "submit": "Plotar",
+
+        "nearest_station": "Estação mais próxima"
+    },
+    "ADVANCED_PLOT": {
+        "date_begin": "Data inicial",
+        "time_begin": "Horário inicial",
+        "date_end": "Data final",
+        "time_end": "Horário final",
+
+        "station": "Estação",
+
+        "data_type": "Atributo",
+
+        "elev": "Masc. Elevação",
+
+        "satellites": "Satelites",
+
+        "line_style": "Estilo da linha",
+        "line_style_options": {
+            "none": "Sem linha",
+            "dot": "Ponto",
+            "solid": "Linha",
+            "dash": "Traço",
+            "dashdot": "Traço e ponto"
+        },
+
+        "line_width": "Espessura da linha",
+
+        "submit": "Plotar"
+    },
+    "HISTORY": {
+        "title": "Histórico",
+        "clear_history": "Limpar Histórico"
+    },
+    "SETTINGS": {
+        "title": "Configurações",
+        "start_page": "Página Inicial",
+        "start_page_options": {
+            "history": "Histórico",
+            "settings": "Configurações"
+        },
+
+        "language": "Idioma",
+        "language_options": {
+            "pt": "Português",
+            "en": "Inglês"
+        },
+
+        "dark_theme": "Tema Escuro",
+        "fullscreen": "Tela Cheia"
+    },
+    "ABOUT": {
+        "title": "Sobre",
+        "description": "Desenvolvido pelo projeto de pesquisa financiado pela UNESP de Presidente Prudente com intuito de expandir os recursos do INCT para estudo da cintilação ionosférica",
+        "contributors": "Contribuidores",
+        "stats_1": "IFSP Student PEP Campus",
+        "stats_2": "Professor at the IFSP Campus PEP"
+    },
+    "HELP": {
+        "title": "Ajuda"
+    }
+}
