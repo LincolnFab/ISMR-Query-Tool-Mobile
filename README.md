@@ -33,9 +33,9 @@ ionic serve
 <br/>
 
 ### Windows
-Download and install Node.js executable version from official repository
+Download and install Node.js executable version from official repository.
 
-To use node commands in windows terminal, is necessary to add the node installation path in System Environment Variables, on Windows configs.
+To use node commands in Windows terminal, is necessary to add the node installation path in System Environment Variables, on Windows configs.
 If you installed Node with default options the folder you path will be something like:
 ```
 C:\Program Files\nodejs\
