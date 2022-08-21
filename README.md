@@ -13,15 +13,16 @@ npm install -g ionic cordova
 
 Create a base project with command:
 ```
-ionic start ismr-query-tool blank --cordova --type=ionic-angular
+ionic start ismr-query-tool blank --cordova --type=angular
 ```
 
-When creation proccess finishes, enter in ismr-query-tool folder and clone this repository with:
+When creation proccess finishes clone this repository on your machine:
 ```
 git clone https://github.com/LincolnFab/ISMR-Query-Tool-Mobile
 ```
+Move the content in repository folder to the new project and overide them.
 
-Finally, to install all plugins and dependencies for project run the following command:
+Finally, to install all plugins and dependencies for project, enter in project folder and run the following command:
 ```
 npm install
 ```
@@ -30,6 +31,7 @@ To run an app preview use inside the folder:
 ```
 ionic serve
 ```
+
 <br/>
 
 ### Windows
@@ -48,15 +50,16 @@ npm install -g ionic cordova
 
 Create a base project with command:
 ```
-ionic start ismr-query-tool blank --cordova --type=ionic-angular
+ionic start ismr-query-tool blank --cordova --type=angular
 ```
 
-When creation proccess finishes, enter in ismr-query-tool folder and clone this repository with:
+When creation proccess finishes clone this repository on your machine:
 ```
 git clone https://github.com/LincolnFab/ISMR-Query-Tool-Mobile
 ```
+Move the content in repository folder to the new project and overide them.
 
-Finally, to install all plugins and dependencies for project run the following command:
+Finally, to install all plugins and dependencies for project, enter in project folder and run the following command:
 ```
 npm install
 ```
@@ -64,4 +67,11 @@ npm install
 To run an app preview use inside the folder:
 ```
 ionic serve
+```
+
+<br/>
+
+If dependency problems arise during any process, run the command in project folder:
+```
+npm install --f
 ```
