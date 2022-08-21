@@ -70,6 +70,7 @@ ionic serve
 ```
 
 <br/>
+
 ### Note
 If dependency problems arise during any process, run the command in project folder:
 ```
