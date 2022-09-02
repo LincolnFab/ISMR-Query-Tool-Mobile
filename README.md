@@ -13,7 +13,7 @@ npm install -g ionic cordova
 
 Create a base project with command:
 ```
-ionic start ismr-query-tool blank --cordova --type=angular
+ionic start ismr-query-tool blank --cordova --type=angular --no-deps
 ```
 
 When creation proccess finishes clone this repository on your machine:
@@ -50,7 +50,7 @@ npm install -g ionic cordova
 
 Create a base project with command:
 ```
-ionic start ismr-query-tool blank --cordova --type=angular
+ionic start ismr-query-tool blank --cordova --type=angular --no-deps
 ```
 
 When creation proccess finishes clone this repository on your machine:
