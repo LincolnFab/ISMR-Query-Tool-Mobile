@@ -85,9 +85,13 @@
         "description": "Desenvolvido pelo projeto de pesquisa financiado pela UNESP de Presidente Prudente com intuito de expandir os recursos do INCT para estudo da cintilação ionosférica",
         "contributors": "Contribuidores",
         "stats_1": "IFSP Student PEP Campus",
-        "stats_2": "Professor at the IFSP Campus PEP"
+        "stats_2": "Professor at the IFSP Campus PEP",
+        "policyandprivacy": "Política e Privacidade"
     },
     "HELP": {
         "title": "Ajuda"
+    },
+    "POLICYANDPRIVACY": {
+        "title": "Política e Privacidade"
     }
 }

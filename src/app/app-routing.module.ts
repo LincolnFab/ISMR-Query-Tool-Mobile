@@ -15,10 +15,6 @@ const routes: Routes = [
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
   },
   {
-    path: 'account',
-    loadChildren: () => import('./account/account.module').then(m => m.AccountPageModule)
-  },
-  {
     path: 'about',
     loadChildren: () => import('./about/about.module').then(m => m.AboutPageModule)
   },
@@ -35,10 +31,15 @@ const routes: Routes = [
     loadChildren: () => import('./skyplot/skyplot.module').then(m => m.SkyplotPageModule)
   },
   {
+    path: 'policy-and-privacy',
+    loadChildren: () => import('./policy-and-privacy/policy-and-privacy.module').then( m => m.PolicyAndPrivacyPageModule)
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'
   }
+
 ];
 
 @NgModule({
